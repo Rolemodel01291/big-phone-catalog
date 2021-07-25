@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +12,6 @@ import HeaderBar from "./HeaderBar";
 const Body = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const addedItems = useSelector((state) => state.catalog.addedItems); //cart items count
   const checkoutPage = useSelector((state) => state.catalog.checkoutPage); //checkout page
   const phonesCheckList = useSelector((state) => state.catalog.phonesCheckList); //checkListitems
   const outputCheckoutList = useSelector(
@@ -25,7 +24,6 @@ const Body = () => {
 
   const removeItem = (id) => {
     dispatch(removeItemFromCart(phonesCheckList, id));
-    // dispatch(setRemovedItemsCount());
   };
 
   const redirect = () => {
@@ -48,7 +46,7 @@ const Body = () => {
             <></>
           ) : (
             <ArrowUpwardIcon
-              style={{ fontSize: "80px" }}
+              style={{ fontSize: "4rem", marginBottom: '5px' }}
               onClick={handlePrevious}
             />
           )}
@@ -56,7 +54,10 @@ const Body = () => {
         <div className="flex grid lg:grid-flow-row md:grid-flow-row sm:grid-flow-row lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-4 md:gap-4 justify-center lg:w-1/2 md:w-3/4 sm:w-4/4">
           <HeaderBar />
           {outputCheckoutList.map((item, index) => (
-            <CheckoutItem item={item} removeItem={removeItem} />
+            <>
+              <CheckoutItem item={item} removeItem={removeItem} />
+              <hr />
+            </>
           ))}
         </div>
         <div className="flex items-center" style={{ cursor: "pointer" }}>
@@ -64,7 +65,7 @@ const Body = () => {
             <></>
           ) : (
             <ArrowDownwardIcon
-              style={{ fontSize: "80px" }}
+              style={{ fontSize: "4rem", marginTop: '5px' }}
               onClick={handleNext}
             />
           )}
@@ -74,7 +75,7 @@ const Body = () => {
             className="justify-start"
             size="large"
             color="primary"
-            style={{ fontSize: "30px" }}
+            style={{ fontSize: "3rem" }}
             onClick={redirect}
           >
             Pay

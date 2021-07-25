@@ -108,7 +108,7 @@ const initialState = {
   outputCheckoutList: [],
   phonesCheckList: [],
   phonesList: [],
-  total_count: 0,
+  totalCount: 0,
   addedItems: 0,
 };
 
@@ -116,29 +116,42 @@ export const catalogSlice = createSlice({
   name: "catalog",
   initialState,
   reducers: {
+
+    //Set page for update or add
     setPage(state, action) {
       state.page = action.payload;
     },
+
+    //Set page in checkout
     setCheckoutPage(state, action) {
       state.checkoutPage = action.payload;
     },
+
+    //Get total number of items for pagination
     setTotal(state, action) {
-      state.total_count = action.payload;
+      state.totalCount = action.payload;
     },
-   
+
+    //Load item to catalog page
     addPhone2List(state, action) {
       state.phonesList = action.payload;
     },
+
+    //Update items when you click same item one more time
     updatePhone2CheckList(state, action) {
       state.phonesCheckList = action.payload;
       state.addedItems += 1;
     },
+
+    //Add item to checkout 
     addPhone2CheckList(state, action) {
       let temp = state.phonesCheckList;
       temp.push(action.payload);
       state.phonesCheckList = temp;
       state.addedItems += 1;
     },
+
+    //Oupput 3 items each time for pagination
     addPhone2CheckoutList(state, action) {
       state.outputCheckoutList = action.payload;
     },

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Typography } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 
 import PhoneItem from "../../components/phoneItem";
@@ -9,7 +8,6 @@ import {
   loadPhoneData,
   addPhone2Cart,
   setTotalCount,
-  setAddedItems,
 } from "../../catalogSlice";
 
 const Body = () => {
@@ -63,7 +61,10 @@ const Body = () => {
             ))}
           </div>
         </div>
-        <div className="w-2/12 flex items-center justify-center" style={{ cursor: "pointer" }}>
+        <div
+          className="w-2/12 flex items-center justify-center"
+          style={{ cursor: "pointer" }}
+        >
           {page === parseInt(Math.ceil(count_total / 10)) ? (
             <></>
           ) : (
