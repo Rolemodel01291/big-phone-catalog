@@ -9,14 +9,14 @@ const Header = (props) => {
   const addedItems = useSelector((state) => state.catalog.addedItems);
 
   return (
-    <div className="my-12 flex justify-between">
-      <div></div>
-      <div>
-        <Typography style={{ fontSize: 20 }}>{props.title}</Typography>
+    <div className="my-12 flex">
+      <div className=" flex w-2/12"></div>
+      <div className=" flex w-8/12 justify-center">
+        <Typography style={{ fontSize: '2rem' }}>{props.title}</Typography>
       </div>
-      <div>
+      <div className=" flex w-2/12 justify-center">
         {addedItems === 0 ? (
-          <AddShoppingCartIcon style={{ fontSize: 30 }} />
+          <AddShoppingCartIcon style={{ fontSize: '3rem' }} />
         ) : (
           <Link
             to={`/checkout`}

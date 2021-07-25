@@ -1,61 +1,85 @@
 import React, { useState, useEffect } from "react";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
-import PhoneItem from "../../components/PhoneItem";
-import {
-  loadPhoneData,
-  addPhone2Cart,
-  setTotalCount,
-  setAddedItems,
-} from "../../catalogSlice";
+import CheckoutItem from "../../components/checkoutItem";
+import { loadCheckoutData, removeItemFromCart } from "../../catalogSlice";
+import HeaderBar from "./HeaderBar";
 
 const Body = () => {
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.catalog.page);
-  const count_total = useSelector((state) => state.catalog.count_total);
-  const phonesList = useSelector((state) => state.catalog.phonesList);
+  const history = useHistory();
+  const addedItems = useSelector((state) => state.catalog.addedItems); //cart items count
+  const checkoutPage = useSelector((state) => state.catalog.checkoutPage); //checkout page
+  const phonesCheckList = useSelector((state) => state.catalog.phonesCheckList); //checkListitems
+  const outputCheckoutList = useSelector(
+    (state) => state.catalog.outputCheckoutList
+  );
 
   useEffect(() => {
-    dispatch(loadPhoneData(page));
-  }, [dispatch]);
+    dispatch(loadCheckoutData(phonesCheckList, checkoutPage));
+  }, [phonesCheckList]);
 
-  const addItem = (item) => {
-    dispatch(addPhone2Cart(item));
-    dispatch(setTotalCount());
-    dispatch(setAddedItems());
+  const removeItem = (id) => {
+    dispatch(removeItemFromCart(phonesCheckList, id));
+    // dispatch(setRemovedItemsCount());
   };
 
-  const handlePrevious = () => {
-    dispatch(loadPhoneData(page - 1));
+  const redirect = () => {
+    history.push("/");
   };
 
   const handleNext = () => {
-    dispatch(loadPhoneData(page + 1));
+    dispatch(loadCheckoutData(phonesCheckList, checkoutPage + 1));
+  };
+
+  const handlePrevious = () => {
+    dispatch(loadCheckoutData(phonesCheckList, checkoutPage - 1));
   };
 
   return (
     <>
-      <div className="flex justify-center">
-        <div className="grid grid-flow-col md:grid-flow-col sm:grid-flow-row grid-rows-3 md:grid-rows-3 sm:grid-rows-3 gap-10 sm:gap-4 justify-center">
-          {phonesList.map((item, index) => (
-            <PhoneItem
-              item={item}
-              index={(page - 1) * 10 + index + 1}
-              addItem={addItem}
+      <div className="flex flex-col items-center">
+        <div className="flex items-center" style={{ cursor: "pointer" }}>
+          {checkoutPage === 1 ? (
+            <></>
+          ) : (
+            <ArrowUpwardIcon
+              style={{ fontSize: "80px" }}
+              onClick={handlePrevious}
             />
+          )}
+        </div>
+        <div className="flex grid lg:grid-flow-row md:grid-flow-row sm:grid-flow-row lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-4 md:gap-4 justify-center lg:w-1/2 md:w-3/4 sm:w-4/4">
+          <HeaderBar />
+          {outputCheckoutList.map((item, index) => (
+            <CheckoutItem item={item} removeItem={removeItem} />
           ))}
         </div>
-        {/* <div className="flex items-center" style={{ cursor: "pointer" }}>
-          {page === Math.floor(count_total / 50) + 1 ? (
+        <div className="flex items-center" style={{ cursor: "pointer" }}>
+          {checkoutPage === parseInt(Math.ceil(phonesCheckList.length / 3)) ? (
             <></>
           ) : (
             <ArrowDownwardIcon
-              style={{ fontSize: "50px" }}
+              style={{ fontSize: "80px" }}
               onClick={handleNext}
             />
           )}
-        </div> */}
+        </div>
+        <div className="flex items-center mt-10" style={{ cursor: "pointer" }}>
+          <Button
+            className="justify-start"
+            size="large"
+            color="primary"
+            style={{ fontSize: "30px" }}
+            onClick={redirect}
+          >
+            Pay
+          </Button>
+        </div>
       </div>
     </>
   );

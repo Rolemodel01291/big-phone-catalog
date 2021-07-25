@@ -4,7 +4,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Typography } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 
-import PhoneItem from "../../components/PhoneItem";
+import PhoneItem from "../../components/phoneItem";
 import {
   loadPhoneData,
   addPhone2Cart,
@@ -16,6 +16,7 @@ const Body = () => {
   const dispatch = useDispatch();
   const page = useSelector((state) => state.catalog.page);
   const count_total = useSelector((state) => state.catalog.count_total);
+  const phonesCheckList = useSelector((state) => state.catalog.phonesCheckList); //checkListitems
   const phonesList = useSelector((state) => state.catalog.phonesList);
 
   useEffect(() => {
@@ -23,9 +24,8 @@ const Body = () => {
   }, [dispatch]);
 
   const addItem = (item) => {
-    dispatch(addPhone2Cart(item));
+    dispatch(addPhone2Cart(phonesCheckList, item));
     dispatch(setTotalCount());
-    dispatch(setAddedItems());
   };
 
   const handlePrevious = () => {
@@ -40,7 +40,7 @@ const Body = () => {
     <>
       <div className="flex">
         <div
-          className="w-1/12 flex items-center justify-end"
+          className="w-2/12 flex items-center justify-center"
           style={{ cursor: "pointer" }}
         >
           {page === 1 ? (
@@ -52,19 +52,19 @@ const Body = () => {
             />
           )}
         </div>
-        <div className="w-10/12">
-          <div className="grid grid-flow-row md:grid-flow-row sm:grid-flow-row grid-cols-5 md:grid-cols-5 sm:grid-cols-2 gap-20 sm:gap-4 justify-center">
+        <div className="w-8/12">
+          <div className="grid lg:grid-flow-row md:grid-flow-row sm:grid-flow-row lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-2 gap-20 sm:gap-4 justify-center lg:w-1/1 md:w-1/1 sm:w-4/4 m-auto">
             {phonesList.map((item, index) => (
               <PhoneItem
-                item = {item}
-                index = {(page - 1) * 10 + index + 1}
-                addItem = {addItem}
+                item={item}
+                index={(page - 1) * 10 + index + 1}
+                addItem={addItem}
               />
             ))}
           </div>
         </div>
-        <div className="w-1/12 flex items-center" style={{ cursor: "pointer" }}>
-          {page === Math.floor(count_total / 50) + 1 ? (
+        <div className="w-2/12 flex items-center justify-center" style={{ cursor: "pointer" }}>
+          {page === parseInt(Math.ceil(count_total / 10)) ? (
             <></>
           ) : (
             <ArrowForwardIcon

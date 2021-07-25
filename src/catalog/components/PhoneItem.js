@@ -12,12 +12,12 @@ const useStyles = makeStyles({
     minHeight: 270,
     boxShadow: "1.5px 1.5px #888888"
   },
-  media: {
-    width: "50%",
-    height: "50%",
-    margin: "auto",
-    marginTop: "5px",
-  },
+  // media: {
+  //   width: "50%",
+  //   height: "50%",
+  //   margin: "auto",
+  //   marginTop: "5px",
+  // },
 });
 
 const PhoneItem = (props) => {
@@ -25,7 +25,7 @@ const PhoneItem = (props) => {
   
   const [state, setState] = useState({
     item: {},
-    id: 1
+    id: 1,
   }) 
 
   useEffect(() => {
@@ -39,14 +39,14 @@ const PhoneItem = (props) => {
   
   return (
     <Card className={classes.root} variant="outlined">
-      <CardMedia className={classes.media} image="/phone.png" title="phone" />
+      <CardMedia className="lg:w-1/4 lg:h-1/2 md:w-1/4 md:h-1/2 sm:w-1/4 sm:h-1/2  w-2/4 h-1/2 m-auto mt-5" image="/phone.png" title="phone" />
       <hr style={{ marginTop: '10px' }}/>
       <CardContent style={{ textAlign: 'center' }}>
-        <Typography gutterBottom variant="h5" component="h2">
+        <Typography className="font-sans" style={{fontSize: '12px'}}>
           {state.item.brand}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions className="justify-center">
         <Button className="justify-start" size="small" color="primary" onClick={addItem}>
           Add
         </Button>
