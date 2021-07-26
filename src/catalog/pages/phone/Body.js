@@ -51,10 +51,11 @@ const Body = () => {
           )}
         </div>
         <div className="w-8/12">
-          <div className="grid lg:grid-flow-row md:grid-flow-row sm:grid-flow-row lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-2 gap-20 sm:gap-4 justify-center lg:w-1/1 md:w-1/1 sm:w-4/4 m-auto">
+          <div className="grid lg:grid-flow-row md:grid-flow-row sm:grid-flow-row lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-4 justify-center lg:w-1/1 md:w-1/1 sm:w-4/4 m-auto">
             {phonesList.map((item, index) => (
               <PhoneItem
                 item={item}
+                key={index}
                 index={(page - 1) * 10 + index + 1}
                 addItem={addItem}
               />

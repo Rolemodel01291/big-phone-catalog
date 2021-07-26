@@ -24,7 +24,7 @@ const PhoneItem = (props) => {
 
   useEffect(() => {
     setState({ ...state, item: props.item, id: props.index });
-  }, []);
+  }, [props]);
 
   const addItem = () => {
     const arr = { ...state.item, id: state.id };
@@ -34,20 +34,21 @@ const PhoneItem = (props) => {
   return (
     <Card className={classes.root} variant="outlined">
       <CardMedia
-        className="lg:w-1/4 lg:h-1/2 md:w-1/4 md:h-1/2 sm:w-1/4 sm:h-1/2  w-2/4 h-1/2 m-auto mt-5"
+        component ="img"
         image="/phone.png"
         title="phone"
+        style = {{margin: 'auto', width: '50%', marginTop: '5px'}}
       />
       <hr style={{ marginTop: "10px" }} />
       <CardContent style={{ textAlign: "center" }}>
-        <Typography className="font-sans" style={{ fontSize: "12px" }}>
+        <Typography className="font-sans text-xl">
           {state.item.brand}
         </Typography>
       </CardContent>
       <CardActions className="justify-center">
         <Button
           className="justify-start"
-          size="small"
+          size="medium"
           color="primary"
           onClick={addItem}
         >

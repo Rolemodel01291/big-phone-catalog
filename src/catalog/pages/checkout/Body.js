@@ -51,11 +51,11 @@ const Body = () => {
             />
           )}
         </div>
-        <div className="flex grid lg:grid-flow-row md:grid-flow-row sm:grid-flow-row lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-4 md:gap-4 justify-center lg:w-1/2 md:w-3/4 sm:w-4/4">
+        <div className="flex grid lg:grid-flow-row md:grid-flow-row sm:grid-flow-row grid-flow-row lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 grid-cols-1 gap-2 justify-center lg:w-1/2 md:w-3/4 sm:w-4/4">
           <HeaderBar />
           {outputCheckoutList.map((item, index) => (
             <>
-              <CheckoutItem item={item} removeItem={removeItem} />
+              <CheckoutItem item={item} key={index} removeItem={removeItem} />
               <hr />
             </>
           ))}
