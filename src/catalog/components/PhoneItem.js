@@ -34,10 +34,10 @@ const PhoneItem = (props) => {
   return (
     <Card className={classes.root} variant="outlined">
       <CardMedia
-        component ="img"
+        component="img"
         image="/phone.png"
         title="phone"
-        style = {{margin: 'auto', width: '50%', marginTop: '5px'}}
+        style={{ margin: "auto", width: "50%", marginTop: "5px" }}
       />
       <hr style={{ marginTop: "10px" }} />
       <CardContent style={{ textAlign: "center" }}>

@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
-import catalogReducer from '../catalog/catalogSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import catalogReducer from "../catalog/catalogSlice";
 
 export const store = configureStore({
   reducer: {

@@ -26,7 +26,9 @@ export function updateItem(phonesCheckList, index, isAdd) {
   let temp_phonesCheckList = phonesCheckList.slice();
   let i = temp_phonesCheckList.findIndex((o) => o.id === index);
   if (temp_phonesCheckList[i]) {
-    isAdd?temp = temp_phonesCheckList[i].count + 1: temp = temp_phonesCheckList[i].count - 1;
+    isAdd
+      ? (temp = temp_phonesCheckList[i].count + 1)
+      : (temp = temp_phonesCheckList[i].count - 1);
     temp_phonesCheckList[i] = { ...temp_phonesCheckList[i], count: temp };
   }
   return temp_phonesCheckList;
@@ -43,7 +45,7 @@ export function removeItemFromCart(phonesCheckList, index) {
   return async (dispatch) => {
     let temp;
     try {
-      if (_.find(phonesCheckList, {id: index}).count > 1) {
+      if (_.find(phonesCheckList, { id: index }).count > 1) {
         temp = updateItem(phonesCheckList, index, false);
       } else {
         temp = _.reject(phonesCheckList, { id: index });
@@ -116,7 +118,6 @@ export const catalogSlice = createSlice({
   name: "catalog",
   initialState,
   reducers: {
-
     //Set page for update or add
     setPage(state, action) {
       state.page = action.payload;
@@ -143,7 +144,7 @@ export const catalogSlice = createSlice({
       state.addedItems += 1;
     },
 
-    //Add item to checkout 
+    //Add item to checkout
     addPhone2CheckList(state, action) {
       let temp = state.phonesCheckList;
       temp.push(action.payload);

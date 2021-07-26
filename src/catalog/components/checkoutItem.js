@@ -22,7 +22,7 @@ const CheckoutItem = (props) => {
           <img
             src="../phone.png"
             alt={state.item.brand}
-            style={{minWidth: '50px', minHeight:'100px'}}
+            style={{ minWidth: "50px", minHeight: "100px" }}
           />
         </div>
         <div className="w-full lg:max-w-full flex md:w-1/2 md:flex sm:w-1/3 w-1/3 justify-center items-center">

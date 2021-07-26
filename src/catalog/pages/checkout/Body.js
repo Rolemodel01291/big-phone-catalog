@@ -46,7 +46,7 @@ const Body = () => {
             <></>
           ) : (
             <ArrowUpwardIcon
-              style={{ fontSize: "3rem", marginBottom: '5px' }}
+              style={{ fontSize: "3rem", marginBottom: "5px" }}
               onClick={handlePrevious}
             />
           )}
@@ -65,7 +65,7 @@ const Body = () => {
             <></>
           ) : (
             <ArrowDownwardIcon
-              style={{ fontSize: "3rem", marginTop: '5px' }}
+              style={{ fontSize: "3rem", marginTop: "5px" }}
               onClick={handleNext}
             />
           )}
