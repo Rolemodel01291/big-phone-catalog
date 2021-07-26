@@ -24,7 +24,7 @@ const PhoneItem = (props) => {
 
   useEffect(() => {
     setState({ ...state, item: props.item, id: props.index });
-  }, [props]);
+  }, []);
 
   const addItem = () => {
     const arr = { ...state.item, id: state.id };

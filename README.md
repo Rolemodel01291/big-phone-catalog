@@ -1,4 +1,15 @@
+Payment checkout 
+
+This project is aiming on payment checkout for purchase.
+
+There are over 1000 phones in the site, and it’s imperative that the website is responsive as users browse through the phone list and add phones to their shopping cart.
+When the user clicks on the shopping cart icon, they’re taken to a check out page that can also list a very long list of items with a down button so the screen loads quickly. They can then remove items from the cart before clicking on the Pay button to complete the purchase. After clicking Pay they are returned to the shopping catalog to repeat the process.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+
+## Tech stacks:
+
+React/React hooks/Redux toolkit/Material UI/TailwindCSS
 
 ## Available Scripts
 

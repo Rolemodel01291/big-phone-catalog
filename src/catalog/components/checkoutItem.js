@@ -1,30 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles({
-  root: {
-    minHeight: 270,
-    boxShadow: "1.5px 1.5px #888888",
-  },
-  media: {
-    width: "50%",
-    height: "50%",
-    margin: "auto",
-    marginTop: "5px",
-  },
-});
-
 const CheckoutItem = (props) => {
-  const classes = useStyles();
-
   const [state, setState] = useState({
     item: {},
   });
 
   useEffect(() => {
     setState({ ...state, item: props.item });
-  }, [props]);
+  }, []);
 
   const removeItem = () => {
     const id = state.item.id;

@@ -12,8 +12,8 @@ import HeaderBar from "./HeaderBar";
 const Body = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const checkoutPage = useSelector((state) => state.catalog.checkoutPage); //checkout page
-  const phonesCheckList = useSelector((state) => state.catalog.phonesCheckList); //checkListitems
+  const checkoutPage = useSelector((state) => state.catalog.checkoutPage); //checkout page number
+  const phonesCheckList = useSelector((state) => state.catalog.phonesCheckList); //checkListitems in cart
   const outputCheckoutList = useSelector(
     (state) => state.catalog.outputCheckoutList
   );
@@ -46,7 +46,7 @@ const Body = () => {
             <></>
           ) : (
             <ArrowUpwardIcon
-              style={{ fontSize: "4rem", marginBottom: '5px' }}
+              style={{ fontSize: "3rem", marginBottom: '5px' }}
               onClick={handlePrevious}
             />
           )}
@@ -65,7 +65,7 @@ const Body = () => {
             <></>
           ) : (
             <ArrowDownwardIcon
-              style={{ fontSize: "4rem", marginTop: '5px' }}
+              style={{ fontSize: "3rem", marginTop: '5px' }}
               onClick={handleNext}
             />
           )}
@@ -75,7 +75,7 @@ const Body = () => {
             className="justify-start"
             size="large"
             color="primary"
-            style={{ fontSize: "3rem" }}
+            style={{ fontSize: "2rem" }}
             onClick={redirect}
           >
             Pay
