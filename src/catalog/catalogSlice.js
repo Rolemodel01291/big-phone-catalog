@@ -84,7 +84,7 @@ export function loadCheckoutData(phonesCheckList, checkoutPage) {
   };
 }
 
-// import 3 items each time from checkoutList
+// Import 3 items each time from checkoutList
 export function fetchCheckoutData(phonesCheckList, checkoutPage) {
   const result = phonesCheckList.slice(
     3 * (checkoutPage - 1),
@@ -93,6 +93,7 @@ export function fetchCheckoutData(phonesCheckList, checkoutPage) {
   return result;
 }
 
+//Get total number of items for pagination
 export function setTotalCount() {
   return async (dispatch) => {
     try {
@@ -105,13 +106,13 @@ export function setTotalCount() {
 }
 
 const initialState = {
-  page: 1,
-  checkoutPage: 1,
-  outputCheckoutList: [],
-  phonesCheckList: [],
-  phonesList: [],
-  totalCount: 0,
-  addedItems: 0,
+  page: 1,               //phone page number 
+  checkoutPage: 1,       //checkout page number
+  outputCheckoutList: [],//items to be loaded in checkout page
+  phonesCheckList: [],   //items to be added in checkout page
+  phonesList: [],        //items to be loaded in phone page
+  totalCount: 0,         //total number of items 
+  addedItems: 0,         //number of items added to cart
 };
 
 export const catalogSlice = createSlice({

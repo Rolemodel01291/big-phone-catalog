@@ -4,17 +4,17 @@ const HeaderBar = () => {
   return (
     <div className="w-full my-12 flex align-center cursor-pointer justify-between">
       <div className="flex w-4/12 items-center justify-center flex-col">
-        <div className="w-full lg:max-w-full flex justify-center lg:text-lg md:text-sm sm:text-xs">
+        <p className="w-full lg:max-w-full flex justify-center text-lg">
           Item
-        </div>
+        </p>
       </div>
 
-      <div className="flex w-4/12 items-center justify-center lg:text-lg md:text-sm sm:text-xs">
-        Price
-      </div>
-      <div className="flex w-4/12 items-center justify-center lg:text-lg md:text-sm sm:text-xs">
+      <p className="flex w-4/12 items-center justify-center text-lg mx-5">
+        Cost
+      </p>
+      <p className="flex w-4/12 items-center justify-center text-lg">
         Count
-      </div>
+      </p>
     </div>
   );
 };

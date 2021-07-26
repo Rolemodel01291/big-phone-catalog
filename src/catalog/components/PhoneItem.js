@@ -41,14 +41,14 @@ const PhoneItem = (props) => {
       />
       <hr style={{ marginTop: "10px" }} />
       <CardContent style={{ textAlign: "center" }}>
-        <Typography className="font-sans text-xl">
+        <Typography className="font-sans" style={{ fontSize: '18px' }}>
           {state.item.brand}
         </Typography>
       </CardContent>
       <CardActions className="justify-center">
         <Button
           className="justify-start"
-          size="medium"
+          size="large"
           color="primary"
           onClick={addItem}
         >

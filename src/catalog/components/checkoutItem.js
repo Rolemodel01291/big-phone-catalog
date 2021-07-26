@@ -27,15 +27,15 @@ const CheckoutItem = (props) => {
         </div>
         <div className="w-full lg:max-w-full flex md:w-1/2 md:flex sm:w-1/3 w-1/3 justify-center items-center">
           <Button onClick={removeItem} className="w-1/2">
-            <p className="text-xs">Remove</p>
+            <p className="text-sm">Remove</p>
           </Button>
         </div>
       </div>
 
-      <div className="flex w-4/12 items-center justify-center lg:text-lg md:text-xs sm:text-xs">{`$${state.item.price}`}</div>
-      <div className="flex w-4/12 items-center justify-center lg:text-lg sm:text-xs md:text-xs">
+      <p className="flex w-4/12 items-center justify-center text-lg mx-5">{`$${state.item.price}`}</p>
+      <p className="flex w-4/12 items-center justify-center text-lg">
         {state.item.count}
-      </div>
+      </p>
     </div>
   );
 };
